@@ -1,0 +1,67 @@
+*, *:before, *::after { 
+  padding: 0; 
+  margin: 0; 
+  box-sizing: inherit; 
+}
+
+body {
+  padding-top: 50px;
+  font-family: 'Arial', sans-serif;
+  background: #1E1E1E;  /* Dark background color */
+  color: #fff;         /* White text color */
+  animation: gradientAnimation 10s infinite alternate;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+h2, .h2 {
+  margin-bottom: 40px;
+  color: #FFD700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Introduce some padding for better spacing */
+body, h2, .h2 {
+  padding: 20px;
+}
+
+/* Add some border-radius and shadow for a modern look */
+h2, .h2 {
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Add animation to buttons */
+button {
+  background-color: #FF416C;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #FF4B2B;
+  transform: scale(1.05);
+}
+
+/* Add some vibrancy to the links */
+a {
+  color: #FFD700;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}

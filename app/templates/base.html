@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel='stylesheet' href="../../static/css/main.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script src="../../static/js/main.js">
+<script src="https://kit.fontawesome.com/f2a8cc3817.js" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<title>Final Project</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a href="{{ url_for('site.home') }}" class="navbar-brand">Final Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{{ url_for('site.home') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('site.about') }}" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('site.profile') }}" class="nav-link">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('site.project_display') }}" class="nav-link">Projects</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.logout') }}" class="nav-link">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.signin') }}" class="nav-link">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.signup')}}" class="nav-link">Sign Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

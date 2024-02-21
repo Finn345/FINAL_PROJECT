@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        padding-top: 50px;
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333; 
+    }
+
+    select,
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #333;
+    }
+
+    button {
+        background-color: #dc3545; 
+        color: #fff; 
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #bd2130; 
+    }
+</style>
+
+<script>
+    
+    window.onload = function () {
+        {% if not current_user.is_authenticated %}
+            alert("You need an account before accessing the API.");
+            window.location.href = "{{ url_for('auth.signup') }}";
+        {% endif %}
+    }
+</script>
+
+<form id="projectForm">
+    <label for="projectSelector">Select Project:</label>
+    <select id="projectSelector" name="projectSelector" onchange="loadProjectDetails()">
+        <option value="" disabled selected>Select a project</option>
+        {% for project in projects %}
+            <option value="{{ project.id }}">{{ project.name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="projectName">Project Name:</label>
+    <input type="text" id="projectName" name="projectName" required>
+
+    <label for="projectDescription">Project Description:</label>
+    <textarea id="projectDescription" name="projectDescription" required></textarea>
+
+    <label for="langToUse">Language to Use:</label>
+    <input type="text" id="langToUse" name="langToUse">
+
+    <label for="numOfLinesAllowed">Number of Lines Allowed:</label>
+    <input type="number" id="numOfLinesAllowed" name="numOfLinesAllowed">
+
+    <button type="button" onclick="createOrUpdateProject()">Create/Update Project</button>
+    <button type="button" onclick="deleteProject()">Delete Project</button>
+</form>
+{% endblock %}

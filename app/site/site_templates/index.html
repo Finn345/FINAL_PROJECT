@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="bg-dark text-light text-center shadow py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Welcome to My Final Project</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if current_user.is_authenticated %}
+<section class="bg-light text-dark py-5">
+    <div class="container">
+        <h2 class="mb-4">Projects submitted:</h2>
+        <ul class="list-group">
+            {% for project in projects %}
+                <li class="list-group-item">{{ project.name }} - {{ project.language_to_use }} - {{ project.description }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% else %}
+<section class="text-center py-5">
+    <h1>If you Sign In/Sign Up you can see the projects here!</h1>
+</section>
+{% endif %}
+{% endblock %}
